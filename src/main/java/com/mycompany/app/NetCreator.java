@@ -5,14 +5,7 @@ package com.mycompany.app;
  */
 class NetCreator {
 
-    //    private final int row;
-//    private final int column;
     private Settings settings;
-
-//    NetCreator(int row, int column) {
-//        this.row = row;
-//        this.column = column;
-//    }
 
     NetCreator(Settings settings) {
         this.settings = settings;
