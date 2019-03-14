@@ -1,5 +1,6 @@
 package com.mycompany.app;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
@@ -32,5 +33,28 @@ public class FieldTestClass {
         assert oField.equals(new Field(Sign.O));
         assert xField.equals(new Field(Sign.X));
         assert emptyField.equals(new Field(Sign.EMPTY));
+    }
+
+
+    @DataProvider
+    public static Object[][] fieldStates(){
+        return new Object[][]{
+                {Sign.EMPTY, Sign.X, Sign.X},
+                {Sign.EMPTY, Sign.O, Sign.O},
+                {Sign.EMPTY, Sign.EMPTY, Sign.EMPTY},
+                {Sign.X, Sign.EMPTY, Sign.EMPTY},
+                {Sign.X, Sign.O, Sign.X},
+                {Sign.X, Sign.X, Sign.X},
+                {Sign.O, Sign.EMPTY, Sign.EMPTY},
+                {Sign.O, Sign.X, Sign.O},
+                {Sign.O, Sign.O, Sign.O}
+        };
+    }
+
+    @Test(dataProvider = "fieldStates")
+    public void testFieldChangeState(Sign initial, Sign toChange, Sign expected){
+        Field field = new Field(initial);
+        field = field.changeState(toChange);
+        assert field.fieldSign.equals(expected);
     }
 }

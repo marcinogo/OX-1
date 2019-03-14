@@ -19,7 +19,16 @@ class Net {
         return netSize;
     }
 
-    public Field getField(int row, int column) {
+    Field getField(int row, int column) {
         return fields[row][column];
+    }
+
+    Net clearNet() {
+        for(Field [] row: fields){
+            for(Field column : row){
+                column.changeState(Sign.EMPTY);
+            }
+        }
+        return new Net(fields);
     }
 }
