@@ -22,7 +22,7 @@ public class NetTestClass {
     }
 
     @DataProvider
-    public static Object[][] checkInitialFieldIn5x5Net(){
+    public static Object[][] checkInitialFieldsIn5x5Net(){
         return new Object[][]{
                 {0,0,Sign.EMPTY},
                 {0,1,Sign.EMPTY},
@@ -54,16 +54,20 @@ public class NetTestClass {
     }
 
     @Test(dataProvider = "netSizesGeneratorWhichAreOk")
-    public void TestSizeOfCreatedNet(int row, int column, int expected){
+    public void testSizeOfCreatedNet(int row, int column, int expected){
         NetCreator netCreator = new NetCreator(row, column);
         Net net = netCreator.createNet();
         assert net.getNetSize() == expected;
     }
 
-    @Test(dataProvider = "checkInitialFieldIn5x5Net")
+    @Test(dataProvider = "checkInitialFieldsIn5x5Net")
     public void testIfNewNetIsFulfilledWithEmptyFields(int row, int column, Sign expectedState){
         NetCreator netCreator = new NetCreator(5, 5);
         Net net = netCreator.createNet();
         assert net.getField(row, column).fieldSign.equals(expectedState);
     }
+
+
+
+
 }

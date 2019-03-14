@@ -1,9 +1,11 @@
 package com.mycompany.app;
 
+import java.util.Objects;
+
 /**
  * @author Wiktor Rup
  */
-public class Field {
+class Field {
 
     Sign fieldSign;
 
@@ -11,5 +13,16 @@ public class Field {
         this.fieldSign = fieldSign;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Field field = (Field) o;
+        return fieldSign == field.fieldSign;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(fieldSign);
+    }
 }
