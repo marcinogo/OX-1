@@ -18,4 +18,8 @@ class Net {
         }
         return netSize;
     }
+
+    public Field getField(int row, int column) {
+        return fields[row][column];
+    }
 }
