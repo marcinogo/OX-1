@@ -5,16 +5,16 @@ package com.mycompany.app;
  */
 class NetCreator {
 
-    private Settings settings;
+    private NetSettings netSettings;
 
-    NetCreator(Settings settings) {
-        this.settings = settings;
+    NetCreator(NetSettings netSettings) {
+        this.netSettings = netSettings;
     }
 
     Net createNet() {
-        Field[][] fields = new Field[settings.getRow()][settings.getColumn()];
-        for (int i = 0; i < settings.getRow(); i++) {
-            for (int j = 0; j < settings.getColumn(); j++) {
+        Field[][] fields = new Field[netSettings.getRow()][netSettings.getColumn()];
+        for (int i = 0; i < netSettings.getRow(); i++) {
+            for (int j = 0; j < netSettings.getColumn(); j++) {
                 fields[i][j] = new Field(Sign.EMPTY);
             }
         }

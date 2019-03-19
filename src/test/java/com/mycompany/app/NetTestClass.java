@@ -87,21 +87,21 @@ public class NetTestClass {
 
     @Test(dataProvider = "netSizesGeneratorWhichAreOk")
     public void testSizeOfCreatedNet(int row, int column, int expected){
-        NetCreator netCreator = new NetCreator(new Settings(row,column));
+        NetCreator netCreator = new NetCreator(new NetSettings(row,column));
         Net net = netCreator.createNet();
         assert net.getNetSize() == expected;
     }
 
     @Test(dataProvider = "checkInitialFieldsIn5x5Net")
     public void testIfNewNetIsFulfilledWithEmptyFields(int row, int column, Sign expectedState){
-        NetCreator netCreator = new NetCreator(new Settings(5,5));
+        NetCreator netCreator = new NetCreator(new NetSettings(5,5));
         Net net = netCreator.createNet();
         assert net.getField(row, column).fieldSign.equals(expectedState);
     }
 
     @Test(dataProvider = "checkClearanceFor5x5Net")
     public void testNetClearance(int row, int column, Sign initial, Sign expected){
-        NetCreator netCreator = new NetCreator(new Settings(5,5));
+        NetCreator netCreator = new NetCreator(new NetSettings(5,5));
         Net net = netCreator.createNet();
         net.getField(row, column).changeState(initial);
         net = net.clearNet();
