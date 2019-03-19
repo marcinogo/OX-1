@@ -13,6 +13,10 @@ class Field {
         this.fieldSign = fieldSign;
     }
 
+    Sign getFieldSign() {
+        return fieldSign;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -32,5 +36,9 @@ class Field {
         }
         else
             return new Field(stateToChange);
+    }
+
+    void setFieldSign(Sign signToPut) {
+        this.fieldSign = signToPut;
     }
 }

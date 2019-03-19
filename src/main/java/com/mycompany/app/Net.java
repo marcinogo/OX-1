@@ -20,7 +20,10 @@ class Net {
     }
 
     Field getField(int row, int column) {
-        return fields[row][column];
+        if(row < 0 || row > fields.length || column < 0 || column > fields[0].length)
+            return new Field(Sign.X);
+        else
+            return fields[row][column];
     }
 
     Net clearNet() {
