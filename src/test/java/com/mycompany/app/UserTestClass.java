@@ -9,31 +9,7 @@ import org.testng.annotations.Test;
 @Test
 public class UserTestClass {
 
-
-    @DataProvider
-    public static Object[][] randomNames() {
-        return new Object[][]{
-                {"Jacek"},
-                {"Michal"},
-                {"cokolwiek"},
-                {"players"},
-                {"sadjklajglsd"},
-                {"***12312309!!!@3salfdsklj"},
-                {"78987"},
-                {"NAzwa gracza numer jeden"}
-
-        };
-    }
-
-    @Test(dataProvider = "randomNames")
-    public void checkUserName(String name) {
-        User user = new User(name, Sign.X, 3);
-
-        assert user.getName().equals(name);
-
-    }
-
-    @DataProvider
+        @DataProvider
     public static Object[][] checkSign(){
         return new Object[][]{
             {Sign.X},
@@ -43,24 +19,9 @@ public class UserTestClass {
 
     @Test(dataProvider = "checkSign")
     public void checkUserSign(Sign sign) {
-        User user = new User("Michal", sign, 12);
+        User user = new User(sign, true);
 
         assert user.getSign().equals(sign);
-    }
-
-    @DataProvider
-    public static Object[][] userScore(){
-        Object[][] objects = new Object[10][1];
-        for(int i=0; i<10;i++){
-            objects[i][0] = i;
-            }
-        return objects;
-        }
-
-    @Test(dataProvider = "userScore")
-    public void checkUserScore(int score) {
-        User user = new User("Beata", Sign.X, score);
-        assert user.getScore() == score;
     }
 
     @DataProvider
@@ -82,9 +43,22 @@ public class UserTestClass {
 
     @Test(dataProvider = "userScoreAddition")
     public void checkUserScoreAddition(int initialScore, int scoreToAdd, int finalScore){
-        User user = new User("Ktos", Sign.X, initialScore);
+        User user = new User( Sign.X, true);
+        user.addScore(initialScore);
         user.addScore(scoreToAdd);
 
         assert user.getScore() == finalScore;
+    }
+
+    @Test
+    public void checkIfUserStarts(){
+        User user = new User(Sign.X,true);
+        assert user.isFirst();
+    }
+
+    @Test
+    public void checkIfUserDoesNotStart(){
+            User user = new User(Sign.O, false);
+            assert !user.isFirst();
     }
 }
