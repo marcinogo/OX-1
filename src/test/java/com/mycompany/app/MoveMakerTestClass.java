@@ -13,34 +13,15 @@ public class MoveMakerTestClass {
 
     @DataProvider
     public static Object[][] checkInitialFieldsIn5x5Net(){
-        return new Object[][]{
-                {0,0},
-                {0,1},
-                {0,2},
-                {0,3},
-                {0,4},
-                {1,0},
-                {1,1},
-                {1,2},
-                {1,3},
-                {1,4},
-                {2,0},
-                {2,1},
-                {2,2},
-                {2,3},
-                {2,4},
-                {3,0},
-                {3,1},
-                {3,2},
-                {3,3},
-                {3,4},
-                {4,0},
-                {4,1},
-                {4,2},
-                {4,3},
-                {4,4}
-
-        };
+        int counter = 0;
+        Object[][] objects = new Object[25][2];
+        for (int i = 0; i < 5; i++)
+            for (int j = 0; j < 5; j++) {
+                objects[counter][0]=i;
+                objects[counter][1]=j;
+                counter++;
+            }
+        return objects;
     }
 
     @DataProvider

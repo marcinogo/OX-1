@@ -34,4 +34,12 @@ class Net {
         }
         return new Net(fields);
     }
+
+    int howManyColumns(){
+        return fields.length;
+    }
+
+    int howManyRows(){
+        return fields[0].length;
+    }
 }
