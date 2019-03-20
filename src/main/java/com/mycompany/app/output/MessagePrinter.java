@@ -1,9 +1,9 @@
-package com.mycompany.app;
+package com.mycompany.app.output;
 
 /**
  * @author Wiktor Rup
  */
-class MessagePrinter {
+public class MessagePrinter {
 
     void print(String text){
         System.out.println(text);

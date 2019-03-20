@@ -1,4 +1,4 @@
-package com.mycompany.app;
+package com.mycompany.app.net;
 
 /**
  * @author Wiktor Rup

@@ -1,4 +1,9 @@
-package com.mycompany.app;
+package com.mycompany.app.output;
+
+
+
+import com.mycompany.app.net.Net;
+import com.mycompany.app.net.NetPrinter;
 
 import java.util.Scanner;
 
@@ -31,10 +36,5 @@ public class Output {
     }
     public void wrongInput(){
         messagePrinter.print("Podales zle dane. Sprobuj jeszcze raz.");
-    }
-
-    void printNet(Net net){
-        NetPrinter netPrinter = new NetPrinter(net);
-        netPrinter.printNet();
     }
 }

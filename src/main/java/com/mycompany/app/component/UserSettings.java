@@ -1,13 +1,15 @@
-package com.mycompany.app;
+package com.mycompany.app.component;
+
+import com.mycompany.app.net.Sign;
 
 /**
  * @author Wiktor Rup
  */
-class UserSettings {
+public class UserSettings {
 
     private Sign startSign;
 
-    UserSettings(int whoStarts) {
+    public UserSettings(int whoStarts) {
         if (whoStarts == 1)
             this.startSign = Sign.O;
         else this.startSign = Sign.X;

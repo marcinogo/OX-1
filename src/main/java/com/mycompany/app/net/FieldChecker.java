@@ -1,9 +1,12 @@
-package com.mycompany.app;
+package com.mycompany.app.net;
+
+import com.mycompany.app.net.Net;
+import com.mycompany.app.net.Sign;
 
 /**
  * @author Wiktor Rup
  */
-class FieldChecker {
+public class FieldChecker {
 
     private int row;
     private int column;

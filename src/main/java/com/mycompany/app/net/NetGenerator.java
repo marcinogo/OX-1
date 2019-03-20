@@ -1,17 +1,18 @@
-package com.mycompany.app;
+package com.mycompany.app.net;
+
 
 /**
  * @author Wiktor Rup
  */
-class NetCreator {
+public class NetGenerator {
 
     private NetSettings netSettings;
 
-    NetCreator(NetSettings netSettings) {
+    public NetGenerator(NetSettings netSettings) {
         this.netSettings = netSettings;
     }
 
-    Net createNet() {
+    public Net createNet() {
         Field[][] fields = new Field[netSettings.getRow()][netSettings.getColumn()];
         for (int i = 0; i < netSettings.getRow(); i++) {
             for (int j = 0; j < netSettings.getColumn(); j++) {

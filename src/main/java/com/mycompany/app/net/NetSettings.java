@@ -1,23 +1,23 @@
-package com.mycompany.app;
+package com.mycompany.app.net;
 
 /**
  * @author Wiktor Rup
  */
-class NetSettings {
+public class NetSettings {
 
     private final int row;
     private final int column;
 
-    NetSettings(int row, int column) {
+    public NetSettings(int row, int column) {
         this.row = row;
         this.column = column;
     }
 
-    int getRow() {
+    public int getRow() {
         return row;
     }
 
-    int getColumn() {
+    public int getColumn() {
         return column;
     }
 }

@@ -1,36 +1,38 @@
-package com.mycompany.app;
+package com.mycompany.app.component;
+
+import com.mycompany.app.net.Sign;
 
 import java.util.Objects;
 
 /**
  * @author Wiktor Rup
  */
-class User {
+public class User {
 
     private Sign sign;
     private int score;
     private boolean isFirst;
 
-    User(Sign sign, boolean isFirst) {
+    public User(Sign sign, boolean isFirst) {
         this.sign = sign;
         this.score = 0;
         this.isFirst = isFirst;
     }
 
 
-    Sign getSign() {
+    public Sign getSign() {
         return sign;
     }
 
-    int getScore() {
+    public int getScore() {
         return score;
     }
 
-    void addScore(int i) {
+    public void addScore(int i) {
         score+=i;
     }
 
-    boolean isFirst() {
+    public boolean isFirst() {
         return isFirst;
     }
 

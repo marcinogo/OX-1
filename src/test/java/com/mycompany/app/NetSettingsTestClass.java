@@ -1,5 +1,8 @@
 package com.mycompany.app;
 
+import com.mycompany.app.net.Net;
+import com.mycompany.app.net.NetGenerator;
+import com.mycompany.app.net.NetSettings;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -29,8 +32,8 @@ public class NetSettingsTestClass {
     @Test(dataProvider = "checkNetRowsAndColumns")
     public void testIfSettingsCreatesProperNetGenerator(int row, int column){
         NetSettings netSettings = new NetSettings(row, column);
-        NetCreator netCreator = new NetCreator(netSettings);
-        Net net = netCreator.createNet();
+        NetGenerator netGenerator = new NetGenerator(netSettings);
+        Net net = netGenerator.createNet();
         assert net.getNetSize() == row*column;
     }
 

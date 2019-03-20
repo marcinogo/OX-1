@@ -1,28 +1,33 @@
-package com.mycompany.app;
+package com.mycompany.app.net;
 
-import com.mycompany.app.Field;
-import com.mycompany.app.Net;
-import com.mycompany.app.Sign;
+import com.mycompany.app.net.Sign;
+import com.mycompany.app.net.Field;
+import com.mycompany.app.net.Net;
 
 /**
  * @author Wiktor Rup
  */
-class NetPrinter {
+public class NetPrinter {
 
     private Net net;
 
-    NetPrinter(Net net) {
+    public NetPrinter(Net net) {
         this.net = net;
     }
 
-    void printNet() {
+    public void printNet() {
         System.out.println();
         printColumnNumbers();
         System.out.println();
         printUpperBorder();
         for (int column = 0; column < net.howManyRows(); column++) {
             System.out.println();
-            System.out.print(" " + column + " |");
+            if(String.valueOf(column).length() == 2){
+                System.out.print(" " + column + "|");
+            }
+            else {
+                System.out.print(" " + column + " |");
+            }
             for (int row = 0; row < net.howManyColumns(); row++) {
                 printSign(net.getField(row, column));
             }
@@ -38,7 +43,11 @@ class NetPrinter {
     private void printColumnNumbers(){
         System.out.print("   |");
         for (int column = 0; column < net.howManyColumns(); column++) {
-            System.out.print(" " + column + " |");
+            if(String.valueOf(column).length() == 2)
+                System.out.print(" " + column + "|");
+            else
+                System.out.print(" " + column + " |");
+
         }
     }
 

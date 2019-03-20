@@ -1,17 +1,17 @@
-package com.mycompany.app;
+package com.mycompany.app.net;
 
 /**
  * @author Wiktor Rup
  */
-class Net {
+public class Net {
 
     private Field[][] fields;
 
-    Net(Field[][] fields) {
+    public Net(Field[][] fields) {
         this.fields = fields;
     }
 
-    int getNetSize() {
+    public int getNetSize() {
         int netSize = 0;
         for (Field[] field : fields) {
             netSize += field.length;
@@ -19,11 +19,11 @@ class Net {
         return netSize;
     }
 
-    Field getField(int row, int column) {
+    public Field getField(int row, int column) {
             return fields[row][column];
     }
 
-    Net clearNet() {
+    public Net clearNet() {
         for(Field [] row: fields){
             for(Field column : row){
                 column.changeState(Sign.EMPTY);
@@ -32,11 +32,11 @@ class Net {
         return new Net(fields);
     }
 
-    int howManyColumns(){
+    public int howManyColumns(){
         return fields.length;
     }
 
-    int howManyRows(){
+    public int howManyRows(){
         return fields[0].length;
     }
 }

@@ -1,5 +1,7 @@
 package com.mycompany.app;
 
+import com.mycompany.app.net.*;
+import com.mycompany.app.net.NetSettings;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -37,8 +39,8 @@ public class MoveMakerTestClass {
     @Test(dataProvider = "checkInitialFieldsIn5x5Net")
     public void checkIfMoveIsPossible(int row, int column){
         NetSettings netSettings = new NetSettings(5, 5);
-        NetCreator netCreator = new NetCreator(netSettings);
-        Net net = netCreator.createNet();
+        NetGenerator netGenerator = new NetGenerator(netSettings);
+        Net net = netGenerator.createNet();
         FieldChecker fieldChecker = new FieldChecker(row, column, net);
         assert fieldChecker.checkField();
     }
@@ -46,8 +48,8 @@ public class MoveMakerTestClass {
     @Test(dataProvider = "wrongCoordinatesFor5x5Net")
     public void checkIfMoveIsImpossibleWhenWrongCoordinates(int row, int column){
         NetSettings netSettings = new NetSettings(5, 5);
-        NetCreator netCreator = new NetCreator(netSettings);
-        Net net = netCreator.createNet();
+        NetGenerator netGenerator = new NetGenerator(netSettings);
+        Net net = netGenerator.createNet();
         FieldChecker fieldChecker = new FieldChecker(row, column, net);
         assert !fieldChecker.checkField();
     }
@@ -55,8 +57,8 @@ public class MoveMakerTestClass {
     @Test(dataProvider = "checkInitialFieldsIn5x5Net")
     public void checkIfXHasBeenPut(int row, int column){
         NetSettings netSettings = new NetSettings(5, 5);
-        NetCreator netCreator = new NetCreator(netSettings);
-        Net net = netCreator.createNet();
+        NetGenerator netGenerator = new NetGenerator(netSettings);
+        Net net = netGenerator.createNet();
         MoveMaker moveMaker = new MoveMaker(Sign.O, row,column,net);
         moveMaker.putSign();
         assert net.getField(row,column).getFieldSign().equals(moveMaker.getSignToPut());
@@ -65,8 +67,8 @@ public class MoveMakerTestClass {
     @Test(dataProvider = "checkInitialFieldsIn5x5Net")
     public void checkIfOHasBeenPut(int row, int column){
         NetSettings netSettings = new NetSettings(5, 5);
-        NetCreator netCreator = new NetCreator(netSettings);
-        Net net = netCreator.createNet();
+        NetGenerator netGenerator = new NetGenerator(netSettings);
+        Net net = netGenerator.createNet();
         MoveMaker moveMaker = new MoveMaker(Sign.X, row,column,net);
         moveMaker.putSign();
         assert net.getField(row,column).getFieldSign().equals(moveMaker.getSignToPut());

@@ -1,5 +1,10 @@
 package com.mycompany.app;
 
+import com.mycompany.app.net.Net;
+import com.mycompany.app.component.User;
+import com.mycompany.app.generators.Settings;
+import com.mycompany.app.output.Output;
+
 import java.util.List;
 
 /**
@@ -16,8 +21,14 @@ class Game {
     void startGame(){
         Net net = settings.createNet();
         List<User> users = settings.generateUsers();
-        NetPrinter netPrinter = new NetPrinter(net);
-        netPrinter.printNet();
+        Output output = new Output();
+        output.printNet(net);
+    }
+
+    void startRound(List<User> users, Net net) {
+        for(User user : users){
+
+        }
     }
 
 

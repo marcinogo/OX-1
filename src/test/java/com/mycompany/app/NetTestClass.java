@@ -1,6 +1,11 @@
 package com.mycompany.app;
 
 
+import com.mycompany.app.net.Field;
+import com.mycompany.app.net.Net;
+import com.mycompany.app.net.Sign;
+import com.mycompany.app.net.NetGenerator;
+import com.mycompany.app.net.NetSettings;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -25,7 +30,7 @@ public class NetTestClass {
     @DataProvider
     public static Object[][] checkInitialFieldsIn5x5Net(){
         return new Object[][]{
-                {0,0,Sign.EMPTY},
+                {0,0, Sign.EMPTY},
                 {0,1,Sign.EMPTY},
                 {0,2,Sign.EMPTY},
                 {0,3,Sign.EMPTY},
@@ -88,22 +93,22 @@ public class NetTestClass {
 
     @Test(dataProvider = "netSizesGeneratorWhichAreOk")
     public void testSizeOfCreatedNet(int row, int column, int expected){
-        NetCreator netCreator = new NetCreator(new NetSettings(row,column));
-        Net net = netCreator.createNet();
+        NetGenerator netGenerator = new NetGenerator(new NetSettings(row,column));
+        Net net = netGenerator.createNet();
         assert net.getNetSize() == expected;
     }
 
     @Test(dataProvider = "checkInitialFieldsIn5x5Net")
     public void testIfNewNetIsFulfilledWithEmptyFields(int row, int column, Sign expectedState){
-        NetCreator netCreator = new NetCreator(new NetSettings(5,5));
-        Net net = netCreator.createNet();
+        NetGenerator netGenerator = new NetGenerator(new NetSettings(5,5));
+        Net net = netGenerator.createNet();
         assert net.getField(row, column).fieldSign.equals(expectedState);
     }
 
     @Test(dataProvider = "checkClearanceFor5x5Net")
     public void testNetClearance(int row, int column, Sign initial, Sign expected){
-        NetCreator netCreator = new NetCreator(new NetSettings(5,5));
-        Net net = netCreator.createNet();
+        NetGenerator netGenerator = new NetGenerator(new NetSettings(5,5));
+        Net net = netGenerator.createNet();
         net.getField(row, column).changeState(initial);
         net = net.clearNet();
         assert net.getField(row, column).equals(new Field(expected));

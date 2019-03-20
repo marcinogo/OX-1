@@ -1,5 +1,7 @@
 package com.mycompany.app;
 
+import com.mycompany.app.net.Sign;
+import com.mycompany.app.component.User;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

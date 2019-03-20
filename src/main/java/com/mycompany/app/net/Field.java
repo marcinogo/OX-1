@@ -1,19 +1,19 @@
-package com.mycompany.app;
+package com.mycompany.app.net;
 
 import java.util.Objects;
 
 /**
  * @author Wiktor Rup
  */
-class Field {
+public class Field {
 
-    Sign fieldSign;
+    public Sign fieldSign;
 
-    Field(Sign fieldSign) {
+    public Field(Sign fieldSign) {
         this.fieldSign = fieldSign;
     }
 
-    Sign getFieldSign() {
+    public Sign getFieldSign() {
         return fieldSign;
     }
 
@@ -30,7 +30,7 @@ class Field {
         return Objects.hash(fieldSign);
     }
 
-    Field changeState(Sign stateToChange) {
+    public Field changeState(Sign stateToChange) {
         if ((fieldSign.equals(Sign.X) || fieldSign.equals(Sign.O))&& !stateToChange.equals(Sign.EMPTY)) {
             return new Field(fieldSign);
         }
@@ -38,7 +38,7 @@ class Field {
             return new Field(stateToChange);
     }
 
-    void setFieldSign(Sign signToPut) {
+    public void setFieldSign(Sign signToPut) {
         this.fieldSign = signToPut;
     }
 }
