@@ -1,5 +1,9 @@
 package com.mycompany.app;
 
+import com.mycompany.app.Field;
+import com.mycompany.app.Net;
+import com.mycompany.app.Sign;
+
 /**
  * @author Wiktor Rup
  */

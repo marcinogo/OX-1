@@ -5,16 +5,12 @@ package com.mycompany.app;
  */
 class UserSettings {
 
-    private boolean player1Starts;
     private Sign startSign;
 
-    UserSettings(boolean player1Starts, Sign startSign) {
-        this.player1Starts = player1Starts;
-        this.startSign = startSign;
-    }
-
-    boolean isPlayer1Starts() {
-        return player1Starts;
+    UserSettings(int whoStarts) {
+        if (whoStarts == 1)
+            this.startSign = Sign.O;
+        else this.startSign = Sign.X;
     }
 
     Sign getStartSign() {

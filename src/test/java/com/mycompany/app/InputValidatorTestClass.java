@@ -1,5 +1,6 @@
 package com.mycompany.app;
 
+import com.mycompany.app.input.Input;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -22,16 +23,36 @@ public class InputValidatorTestClass {
         return objects;
     }
 
-    @Test(dataProvider = "negativeNumbersForInputTest")
-    public void checkIfNegativeValueIsRejected(int number){
-        InputValidator inputValidator = new InputValidator();
-        assert !inputValidator.checkIfValueIsNegative(number);
+    @DataProvider
+    public static Object[][] properSizeOfNet(){
+        Object[][] objects = new Object[98][1];
+        int counter = 0;
+        for(int i = 3; i<101; i++){
+            objects[counter][0] = String.valueOf(i);
+            counter++;
+        }
+        return objects;
+    }
+
+    @Test(dataProvider = "properSizeOfNet")
+    public void checkIfGivenNumberIsBetween3And100(String sizeOfNet){
+        Input inputValidator = new Input();
+        assert inputValidator.checkIfNetWidthIsProper(sizeOfNet);
     }
 
     @Test
-    public void checkIfPositiveValueIsNotRejected(){
-        InputValidator inputValidator = new InputValidator();
-        assert inputValidator.checkIfValueIsNegative(10);
+    public void checkIfGivenNumberIs1Or2(){
+        Input inputValidator = new Input();
+        assert inputValidator.checkIfValueChoosePlayer("2");
+        assert !inputValidator.checkIfValueChoosePlayer("123");
+    }
+
+    @Test
+    public void checkIfGivenNumberIsBiggerThan3(){
+        Input inputValidator = new Input();
+        inputValidator.checkIfNetWidthIsProper("10");
+        inputValidator.checkIfNetHeightIsProper("10");
+        assert inputValidator.checkIfWinStreakIsProper("4");
     }
 
 }

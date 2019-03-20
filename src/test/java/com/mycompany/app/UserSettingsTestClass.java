@@ -15,15 +15,15 @@ public class UserSettingsTestClass {
     @DataProvider
     public static Object[][] possibleUsersSettings() {
         return new Object[][]{
-                {true, Sign.X, false, Sign.O},
-                {true, Sign.O, false, Sign.X}
+                {2, true, Sign.X, false, Sign.O},
+                {1, true, Sign.O, false, Sign.X}
         };
     }
 
 
     @Test(dataProvider = "possibleUsersSettings")
-    public void checkSettingsCreation(boolean isFirst, Sign firstSign, boolean secondOne, Sign singForSecond) {
-        UserSettings userSettings = new UserSettings(isFirst, firstSign);
+    public void checkSettingsCreation(int whoStarts, boolean isFirst, Sign firstSign, boolean secondOne, Sign singForSecond) {
+        UserSettings userSettings = new UserSettings(whoStarts);
         UserGenerator userGenerator = new UserGenerator(userSettings);
         User user1 = new User(firstSign, isFirst);
         User user2 = new User(singForSecond, secondOne);

@@ -16,7 +16,10 @@ class FieldChecker {
     }
 
     boolean checkField(){
-        return  net.getField(row, column).getFieldSign().equals(Sign.EMPTY);
+        if(row < 0 || row > net.howManyRows() || column < 0 || column > net.howManyRows())
+            return false;
+        else
+            return net.getField(row, column).getFieldSign().equals(Sign.EMPTY);
     }
 }
 
