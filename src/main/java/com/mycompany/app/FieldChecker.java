@@ -15,11 +15,14 @@ class FieldChecker {
         this.net = net;
     }
 
-    boolean checkField(){
-        if(row < 0 || row > net.howManyRows() || column < 0 || column > net.howManyRows())
+    boolean checkField() {
+        System.out.println("Rzedy " + net.howManyRows() + " Podany rzad" + row);
+        System.out.println("Kolumny " + net.howManyColumns() + " Podana kolumna" + column);
+        if(row < 0 || row >= net.howManyRows() || column < 0 || column >= net.howManyColumns()) {
             return false;
-        else
+        } else {
             return net.getField(row, column).getFieldSign().equals(Sign.EMPTY);
+        }
     }
 }
 

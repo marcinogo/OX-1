@@ -15,12 +15,15 @@ class MoveMaker {
         this.row = row;
         this.column = column;
         this.net = net;
-        this.fieldChecker = new FieldChecker(row, column, net);
+        fieldChecker = new FieldChecker(row, column, net);
     }
 
-    void putSign() {
-        if(fieldChecker.checkField()){
+    boolean putSign() {
+        if(fieldChecker.checkField()) {
             net.getField(row, column).setFieldSign(signToPut);
+            return true;
+        } else {
+            return false;
         }
     }
 

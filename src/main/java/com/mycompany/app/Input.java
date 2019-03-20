@@ -1,4 +1,4 @@
-package com.mycompany.app.input;
+package com.mycompany.app;
 
 /**
  * @author Wiktor Rup
@@ -22,6 +22,10 @@ public class Input {
     public boolean checkIfWinStreakIsProper(String winStreak) {
         return inputValidator.checkIfWinStreakIsProper(winStreak);
 
+    }
+
+    public boolean checkIfUserMoveIsProper(String coordinates, Sign sign, Net net) {
+        return inputValidator.checkIfUserMoveIsProper(coordinates, sign, net);
     }
 
 }

@@ -10,10 +10,7 @@ public class Settings {
 
     private UserSettings userSettings;
     private NetSettings netSettings;
-
-    void setStartPlayer(int whoStarts) {
-        userSettings = new UserSettings(whoStarts);
-    }
+    private int winStreak;
 
     List<User> generateUsers() {
         UserGenerator userGenerator = new UserGenerator(userSettings);
@@ -27,5 +24,17 @@ public class Settings {
     Net createNet() {
         NetCreator netCreator = new NetCreator(netSettings);
         return netCreator.createNet();
+    }
+
+    int getWinStreak() {
+        return winStreak;
+    }
+
+    void setWinStreak(int winStreak) {
+        this.winStreak = winStreak;
+    }
+
+    void setStartPlayer(int whoStarts) {
+        userSettings = new UserSettings(whoStarts);
     }
 }

@@ -1,9 +1,5 @@
 package com.mycompany.app;
 
-import com.mycompany.app.Field;
-import com.mycompany.app.Net;
-import com.mycompany.app.Sign;
-
 /**
  * @author Wiktor Rup
  */
@@ -22,7 +18,11 @@ class NetPrinter {
         printUpperBorder();
         for (int column = 0; column < net.howManyRows(); column++) {
             System.out.println();
-            System.out.print(" " + column + " |");
+            if(String.valueOf(column).length() == 2) {
+                System.out.print(" " + column + "|");
+            } else {
+                System.out.print(" " + column + " |");
+            }
             for (int row = 0; row < net.howManyColumns(); row++) {
                 printSign(net.getField(row, column));
             }
@@ -33,12 +33,17 @@ class NetPrinter {
             }
 
         }
+        System.out.println();
     }
 
-    private void printColumnNumbers(){
+    private void printColumnNumbers() {
         System.out.print("   |");
         for (int column = 0; column < net.howManyColumns(); column++) {
-            System.out.print(" " + column + " |");
+            if(String.valueOf(column).length() == 2) {
+                System.out.print(" " + column + "|");
+            } else {
+                System.out.print(" " + column + " |");
+            }
         }
     }
 
@@ -50,11 +55,12 @@ class NetPrinter {
     }
 
     private void printSign(Field field) {
-        if (field.getFieldSign().equals(Sign.X))
+        if(field.getFieldSign().equals(Sign.X)) {
             System.out.print(" X |");
-        else if (field.getFieldSign().equals(Sign.O))
+        } else if(field.getFieldSign().equals(Sign.O)) {
             System.out.print(" O |");
-        else
+        } else {
             System.out.print("   |");
+        }
     }
 }

@@ -13,10 +13,37 @@ class User {
 
     User(Sign sign, boolean isFirst) {
         this.sign = sign;
-        this.score = 0;
+        score = 0;
         this.isFirst = isFirst;
     }
 
+    void addScore(int i) {
+        score += i;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sign, score, isFirst);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) {
+            return true;
+        }
+        if(o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        User user = (User) o;
+        return score == user.score &&
+                isFirst == user.isFirst &&
+                sign == user.sign;
+    }
+
+    @Override
+    public String toString() {
+        return sign.toString();
+    }
 
     Sign getSign() {
         return sign;
@@ -26,26 +53,7 @@ class User {
         return score;
     }
 
-    void addScore(int i) {
-        score+=i;
-    }
-
     boolean isFirst() {
         return isFirst;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return score == user.score &&
-                isFirst == user.isFirst &&
-                sign == user.sign;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(sign, score, isFirst);
     }
 }

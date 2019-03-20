@@ -1,7 +1,5 @@
 package com.mycompany.app;
 
-import com.mycompany.app.input.Input;
-
 /**
  * @author Wiktor Rup
  */
