@@ -18,10 +18,10 @@ class Game {
 
     Game(Settings settings) {
         this.settings = settings;
-        this.net = settings.createNet();
-        this.users = settings.generateUsers();
-        this.judge = new Judge(settings.getWinStreak());
-        this.auditor = new Auditor(users);
+        net = settings.createNet();
+        users = settings.generateUsers();
+        judge = new Judge(settings.getWinStreak());
+        auditor = new Auditor(users);
 
     }
 
@@ -37,12 +37,12 @@ class Game {
                 User user = userProvider.startingUser(users);
                 startRound(net, user, output, input, judge, auditor);
             }
-            if (winner) {
+            if(winner) {
                 output.printWinnerAnnouncement(auditor.winning(), settings.getBundleProvider());
                 resetGame();
             } else {
                 auditor.addDrawScore();
-                output.printDrawAnnouncement(auditor.draw(), settings.getBundleProvider());
+                output.printDrawAnnouncement(auditor.results(), settings.getBundleProvider());
                 resetGame();
             }
             numberOfGames++;
@@ -62,7 +62,7 @@ class Game {
         }
         moveCounter--;
 
-        if (judge.checkWinner(move, net)) {
+        if(judge.checkWinner(move, net)) {
             winner = true;
             output.printNet(net);
             auditor.addWinScore(user);

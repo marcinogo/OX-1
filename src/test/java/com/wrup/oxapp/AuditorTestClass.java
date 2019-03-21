@@ -84,7 +84,7 @@ public class AuditorTestClass {
                 String.valueOf(userList.get(1).getScore())
         };
 
-        assert Arrays.equals(auditor.draw(), drawArray);
+        assert Arrays.equals(auditor.results(), drawArray);
     }
 
     @Test

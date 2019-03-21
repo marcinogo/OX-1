@@ -21,7 +21,7 @@ class GameInitializer {
             output.wrongLanguage();
             language = output.chooseLanguage();
         }
-        settings.setBundleProvider(new StringParser(language).parseToInt());
+        settings.setBundleProvider(new StringConverter(language).parseToInt());
         output.printQuitMessage(settings.getBundleProvider());
         String whoStarts = output.chooseWhoStarts(settings.getBundleProvider());
         while (!input.checkIfValueChoosePlayer(whoStarts)) {
@@ -43,9 +43,10 @@ class GameInitializer {
             output.wrongInput(settings.getBundleProvider());
             winStreak = output.setWinStreak(settings.getBundleProvider());
         }
-        settings.setStartPlayer(new StringParser(whoStarts).parseToInt());
-        settings.setNetSize(new StringParser(heightOfNet).parseToInt(), new StringParser(widthOfNet).parseToInt());
-        settings.setWinStreak(new StringParser(winStreak).parseToInt());
+        settings.setStartPlayer(new StringConverter(whoStarts).parseToInt());
+        settings.setNetSize(new StringConverter(heightOfNet).parseToInt(),
+                            new StringConverter(widthOfNet).parseToInt());
+        settings.setWinStreak(new StringConverter(winStreak).parseToInt());
 
         return settings;
     }

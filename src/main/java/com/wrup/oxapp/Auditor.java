@@ -20,8 +20,9 @@ class Auditor {
     }
 
     void addDrawScore() {
-        for (User user : users)
+        for (User user : users) {
             user.addScore(1);
+        }
     }
 
     String[] winning() {
@@ -34,7 +35,8 @@ class Auditor {
         };
     }
 
-    String[] draw() {
+    String[] results() {
+
         return new String[]{
                 users.get(0).toString(),
                 String.valueOf(users.get(0).getScore()),
@@ -43,14 +45,4 @@ class Auditor {
         };
     }
 
-    String[] results() {
-
-        String[] result = new String[6];
-        result[0] = users.get(0).toString();
-        result[1] = String.valueOf(users.get(0).getScore());
-        result[2] = users.get(1).toString();
-        result[3] = String.valueOf(users.get(1).getScore());
-
-        return result;
-    }
 }

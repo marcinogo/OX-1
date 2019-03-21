@@ -1,10 +1,10 @@
 package com.wrup.oxapp;
 
-class StringParser {
+class StringConverter {
 
     private String text;
 
-    StringParser(String text) {
+    StringConverter(String text) {
         this.text = text;
     }
 
