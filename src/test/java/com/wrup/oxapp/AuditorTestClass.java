@@ -86,26 +86,4 @@ public class AuditorTestClass {
 
         assert Arrays.equals(auditor.results(), drawArray);
     }
-
-    @Test
-    public void checkIfAuditorKeepsResults() {
-        User user1 = new User(Sign.X, true);
-        User user2 = new User(Sign.O, false);
-
-        List<User> userList = new ArrayList<>();
-        userList.add(user1);
-        userList.add(user2);
-
-        Auditor auditor = new Auditor(userList);
-        auditor.addWinScore(user1);
-        auditor.addDrawScore();
-
-        String[] resultArray = new String[6];
-        resultArray[0] = userList.get(0).toString();
-        resultArray[1] = String.valueOf(userList.get(0).getScore());
-        resultArray[2] = userList.get(1).toString();
-        resultArray[3] = String.valueOf(userList.get(1).getScore());
-
-        assert Arrays.equals(auditor.results(), resultArray);
-    }
 }
