@@ -38,6 +38,7 @@ public class OXApp {
         }
         settings.setStartPlayer(new StringParser(whoStarts).parseToInt());
         settings.setNetSize(new StringParser(heightOfNet).parseToInt(),new StringParser(widthOfNet).parseToInt());
+        settings.setWinStreak(new StringParser(winStreak).parseToInt());
     }
 
 }
