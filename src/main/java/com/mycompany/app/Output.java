@@ -5,43 +5,74 @@ import java.util.Scanner;
 /**
  * @author Wiktor Rup
  */
-public class Output {
+class Output {
 
     private MessagePrinter messagePrinter = new MessagePrinter();
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
 
-    public String chooseWhoStarts() {
-        messagePrinter.print("Podaj 1, jezeli chcesz zeby zaczal gracz 'O', albo 2 jezeli ma zaczac 'X'");
+    Output() {
+        scanner = new Scanner(System.in);
+    }
+
+    Output(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    String chooseLanguage() {
+        messagePrinter.print("Wybierz jezyk/Choose langauge:");
+        messagePrinter.print("1. Polski");
+        messagePrinter.print("2. English");
         return scanner.nextLine();
     }
 
-    public String setHeightOfNet() {
-        messagePrinter.print("Podaj wysokosc siatki z przedzialu (3-100)");
+    String chooseWhoStarts(BundleProvider bundleProvider) {
+        messagePrinter.print(bundleProvider.getMessage("who_starts"));
         return scanner.nextLine();
     }
 
-    public String setWidthOfNet() {
-        messagePrinter.print("Podaj szerokosc siatki z przedzialu (3-100)");
+    String setHeightOfNet(BundleProvider bundleProvider) {
+        messagePrinter.print(bundleProvider.getMessage("net_height"));
         return scanner.nextLine();
     }
 
-    public String setWinStreak() {
+    String setWidthOfNet(BundleProvider bundleProvider) {
+        messagePrinter.print(bundleProvider.getMessage("net_width"));
+        return scanner.nextLine();
+    }
+
+    String setWinStreak(BundleProvider bundleProvider) {
         messagePrinter.print(
-                "Podaj ilosc znakow potrzebych do wygrania z przedzialu (3 - minimum z wysokosci/szerokosci siatki)");
+                bundleProvider.getMessage("win_conditions"));
         return scanner.nextLine();
     }
 
-    public void wrongInput() {
-        messagePrinter.print("Podales zle dane. Sprobuj jeszcze raz.");
+    void wrongInput(BundleProvider bundleProvider) {
+        messagePrinter.print(bundleProvider.getMessage("wrong_input"));
     }
 
-    public String userMove(User user) {
-        messagePrinter.print("Ruch gracza " + user.toString() + ". Podaj pole w formacie 'r,k', gdzie r to rzad, a k to kolumna.");
+    String userMove(BundleProvider bundleProvider, User user) {
+        messagePrinter.print(bundleProvider.getMessage("player_move"), user.toString());
         return scanner.nextLine();
     }
 
-    public void winner(User user) {
-        messagePrinter.print("Wygrywa gracz " + user.toString() + ".");
+    void printWinnerAnnouncement(String[] winner, BundleProvider bundleProvider) {
+        messagePrinter.print(bundleProvider.getMessage("winner"), winner);
+    }
+
+    void printDrawAnnouncement(String[] draws, BundleProvider bundleProvider) {
+        messagePrinter.print(bundleProvider.getMessage("draw"), draws);
+    }
+
+    void printGameName(int gameNumber, BundleProvider bundleProvider) {
+        messagePrinter.print(bundleProvider.getMessage("game"), String.valueOf(gameNumber));
+    }
+
+    void printFinalResults(String[] results, BundleProvider bundleProvider) {
+        messagePrinter.print(bundleProvider.getMessage("end_game"), results);
+    }
+
+    void wrongLanguage() {
+        messagePrinter.print("Wrong data. Try again!/Zly wybor. Sprobuj jeszcze raz.");
     }
 
     void printNet(Net net) {

@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * @author Wiktor Rup
  */
-class User {
+class User implements Comparable {
 
     private Sign sign;
     private int score;
@@ -28,10 +28,10 @@ class User {
 
     @Override
     public boolean equals(Object o) {
-        if(this == o) {
+        if (this == o) {
             return true;
         }
-        if(o == null || getClass() != o.getClass()) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         User user = (User) o;
@@ -57,8 +57,14 @@ class User {
         return isFirst;
     }
 
-    User changePriority(){
+    User changePriority() {
         this.isFirst = !isFirst;
         return this;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        User user = (User) o;
+        return Integer.compare(this.getScore(), ((User) o).getScore());
     }
 }

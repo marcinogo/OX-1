@@ -18,7 +18,7 @@ class NetPrinter {
         printUpperBorder();
         for (int row = 0; row < net.howManyRows(); row++) {
             System.out.println();
-            if(String.valueOf(row).length() == 2) {
+            if (String.valueOf(row).length() == 2) {
                 System.out.print(" " + row + "|");
             } else {
                 System.out.print(" " + row + " |");
@@ -39,7 +39,7 @@ class NetPrinter {
     private void printColumnNumbers() {
         System.out.print("   |");
         for (int column = 0; column < net.howManyColumns(); column++) {
-            if(String.valueOf(column).length() == 2) {
+            if (String.valueOf(column).length() == 2) {
                 System.out.print(" " + column + "|");
             } else {
                 System.out.print(" " + column + " |");
@@ -55,9 +55,9 @@ class NetPrinter {
     }
 
     private void printSign(Field field) {
-        if(field.getFieldSign().equals(Sign.X)) {
+        if (field.getFieldSign().equals(Sign.X)) {
             System.out.print(" X |");
-        } else if(field.getFieldSign().equals(Sign.O)) {
+        } else if (field.getFieldSign().equals(Sign.O)) {
             System.out.print(" O |");
         } else {
             System.out.print("   |");

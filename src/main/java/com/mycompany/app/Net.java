@@ -20,25 +20,23 @@ class Net {
     }
 
     Field getField(int row, int column) {
-            return fields[row][column];
+        return fields[row][column];
     }
 
     Net clearNet() {
-        for(Field [] row: fields){
-            for(Field column : row){
+        for (Field[] row : fields) {
+            for (Field column : row) {
                 column.changeState(Sign.EMPTY);
             }
         }
         return new Net(fields);
     }
 
-    int howManyColumns(){
-        //System.out.println("KOLUMNY " + fields.length);
+    int howManyColumns() {
         return fields[0].length;
     }
 
-    int howManyRows(){
-        //System.out.println("RZEDY " + fields[0].length);
+    int howManyRows() {
         return fields.length;
     }
 }

@@ -37,7 +37,7 @@ class Judge {
     private boolean checkHorizontal(int row, int column, Net net) {
         resetCounters();
         for (int i = column + winStreak; i > column - winStreak; i--) {
-            if (row < net.howManyRows() && i < net.howManyColumns() && i>=0) {
+            if (row < net.howManyRows() && i < net.howManyColumns() && i >= 0) {
                 isCrossOrCircle(row, i);
             }
         }
@@ -47,7 +47,7 @@ class Judge {
     private boolean checkVertical(int row, int column, Net net) {
         resetCounters();
         for (int i = row - winStreak; i < row + winStreak; i++) {
-            if (i < net.howManyRows() && i>=0 && column < net.howManyColumns()) {
+            if (i < net.howManyRows() && i >= 0 && column < net.howManyColumns()) {
                 isCrossOrCircle(i, column);
             }
         }
@@ -58,7 +58,7 @@ class Judge {
     private boolean checkDiagonal(int row, int column, Net net) {
         resetCounters();
         for (int i = row - winStreak, j = column - winStreak; i < row + winStreak; j++, i++) {
-            if (i < net.howManyRows() && i>=0 && j < net.howManyColumns() && j>=0) {
+            if (i < net.howManyRows() && i >= 0 && j < net.howManyColumns() && j >= 0) {
                 isCrossOrCircle(i, j);
             }
         }
@@ -68,7 +68,7 @@ class Judge {
     private boolean checkAntiDiagonal(int row, int column, Net net) {
         resetCounters();
         for (int i = row - winStreak, j = column + winStreak; i > row - winStreak; j--, i--) {
-            if (i < net.howManyRows() && i>=0 && j < net.howManyColumns() && j>=0) {
+            if (i < net.howManyRows() && i >= 0 && j < net.howManyColumns() && j >= 0) {
                 isCrossOrCircle(i, j);
             }
         }

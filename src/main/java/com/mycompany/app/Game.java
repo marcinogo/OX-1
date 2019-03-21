@@ -7,43 +7,73 @@ import java.util.List;
  */
 class Game {
 
+    private Judge judge;
+    private Auditor auditor;
+    private Net net;
+    private List<User> users;
     private Settings settings;
     private boolean winner = false;
     private int moveCounter;
+    private int numberOfGames = 1;
 
     Game(Settings settings) {
         this.settings = settings;
+        this.net = settings.createNet();
+        this.users = settings.generateUsers();
+        this.judge = new Judge(settings.getWinStreak());
+        this.auditor = new Auditor(users);
+
     }
 
     void startGame() {
-        Net net = settings.createNet();
         moveCounter = net.getNetSize();
-        List<User> users = settings.generateUsers();
         UserProvider userProvider = new UserProvider();
-
-        while (!winner && moveCounter != 0) {
-            startRound(net, userProvider.startingUser(users));
-        }
-    }
-
-    private void startRound(Net net, User user) {
         Output output = new Output();
         Input input = new Input();
-        Judge judge = new Judge(settings.getWinStreak());
+
+        while (numberOfGames <= 3) {
+            output.printGameName(numberOfGames, settings.getBundleProvider());
+            while (!winner && moveCounter != 0) {
+                User user = userProvider.startingUser(users);
+                startRound(net, user, output, input, judge, auditor);
+            }
+            if (winner) {
+                output.printWinnerAnnouncement(auditor.winning(), settings.getBundleProvider());
+                resetGame();
+            } else {
+                auditor.addDrawScore();
+                output.printDrawAnnouncement(auditor.draw(), settings.getBundleProvider());
+                resetGame();
+            }
+            numberOfGames++;
+        }
+
+        output.printFinalResults(auditor.results(), settings.getBundleProvider());
+
+    }
+
+    private void startRound(Net net, User user, Output output, Input input, Judge judge, Auditor auditor) {
+
         output.printNet(net);
-        String move = output.userMove(user);
+        String move = output.userMove(settings.getBundleProvider(), user);
         while (!input.checkIfUserMoveIsProper(move, user.getSign(), net)) {
-            output.wrongInput();
-            move = output.userMove(user);
+            output.wrongInput(settings.getBundleProvider());
+            move = output.userMove(settings.getBundleProvider(), user);
         }
         moveCounter--;
 
-        if(judge.checkWinner(move, net)) {
-            output.winner(user);
+        if (judge.checkWinner(move, net)) {
             winner = true;
             output.printNet(net);
+            auditor.addWinScore(user);
         }
 
+    }
+
+    private void resetGame() {
+        winner = false;
+        moveCounter = net.getNetSize();
+        net = settings.createNet();
     }
 
 

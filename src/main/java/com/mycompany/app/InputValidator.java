@@ -35,7 +35,7 @@ class InputValidator {
         String[] coords = new StringParser(coordinates).splitString(",");
         int row;
         int column;
-        if(coords.length != 2) {
+        if (coords.length != 2) {
             return false;
         } else {
             row = new StringParser(coords[0]).parseToInt();
@@ -43,5 +43,10 @@ class InputValidator {
             MoveMaker moveMaker = new MoveMaker(sign, row, column, net);
             return moveMaker.putSign();
         }
+    }
+
+    boolean checkIfChosenLanguageIsProper(String language) {
+        int lang = new StringParser(language).parseToInt();
+        return lang == 1 || lang == 2;
     }
 }

@@ -19,7 +19,7 @@ class MoveMaker {
     }
 
     boolean putSign() {
-        if(fieldChecker.checkField()) {
+        if (fieldChecker.checkField()) {
             net.getField(row, column).setFieldSign(signToPut);
             return true;
         } else {

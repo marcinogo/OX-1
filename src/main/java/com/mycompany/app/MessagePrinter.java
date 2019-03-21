@@ -5,7 +5,11 @@ package com.mycompany.app;
  */
 class MessagePrinter {
 
-    void print(String text){
-        System.out.println(text);
+    void print(String rb, String... text) {
+        if (text.length != 0) {
+            System.out.println(String.format(rb, text));
+        } else {
+            System.out.println(rb);
+        }
     }
 }

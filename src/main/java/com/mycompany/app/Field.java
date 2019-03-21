@@ -31,10 +31,9 @@ class Field {
     }
 
     Field changeState(Sign stateToChange) {
-        if ((fieldSign.equals(Sign.X) || fieldSign.equals(Sign.O))&& !stateToChange.equals(Sign.EMPTY)) {
+        if ((fieldSign.equals(Sign.X) || fieldSign.equals(Sign.O)) && !stateToChange.equals(Sign.EMPTY)) {
             return new Field(fieldSign);
-        }
-        else
+        } else
             return new Field(stateToChange);
     }
 
