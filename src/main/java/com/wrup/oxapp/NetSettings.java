@@ -1,14 +1,14 @@
-package com.mycompany.app;
+package com.wrup.oxapp;
 
 /**
  * @author Wiktor Rup
  */
-class Settings {
+class NetSettings {
 
     private final int row;
     private final int column;
 
-    Settings(int row, int column) {
+    NetSettings(int row, int column) {
         this.row = row;
         this.column = column;
     }

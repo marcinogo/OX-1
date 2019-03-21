@@ -1,4 +1,4 @@
-package com.mycompany.app;
+package com.wrup.oxapp;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

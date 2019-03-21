@@ -1,4 +1,4 @@
-package com.mycompany.app;
+package com.wrup.oxapp;
 
 import java.util.Objects;
 
@@ -11,6 +11,10 @@ class Field {
 
     Field(Sign fieldSign) {
         this.fieldSign = fieldSign;
+    }
+
+    Sign getFieldSign() {
+        return fieldSign;
     }
 
     @Override
@@ -27,10 +31,13 @@ class Field {
     }
 
     Field changeState(Sign stateToChange) {
-        if ((fieldSign.equals(Sign.X) || fieldSign.equals(Sign.O))&& !stateToChange.equals(Sign.EMPTY)) {
+        if ((fieldSign.equals(Sign.X) || fieldSign.equals(Sign.O)) && !stateToChange.equals(Sign.EMPTY)) {
             return new Field(fieldSign);
-        }
-        else
+        } else
             return new Field(stateToChange);
+    }
+
+    void setFieldSign(Sign signToPut) {
+        this.fieldSign = signToPut;
     }
 }

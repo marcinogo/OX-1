@@ -1,4 +1,4 @@
-package com.mycompany.app;
+package com.wrup.oxapp;
 
 /**
  * @author Wiktor Rup
@@ -24,11 +24,19 @@ class Net {
     }
 
     Net clearNet() {
-        for(Field [] row: fields){
-            for(Field column : row){
+        for (Field[] row : fields) {
+            for (Field column : row) {
                 column.changeState(Sign.EMPTY);
             }
         }
         return new Net(fields);
+    }
+
+    int howManyColumns() {
+        return fields[0].length;
+    }
+
+    int howManyRows() {
+        return fields.length;
     }
 }
