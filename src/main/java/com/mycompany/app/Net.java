@@ -33,10 +33,12 @@ class Net {
     }
 
     int howManyColumns(){
-        return fields.length;
+        //System.out.println("KOLUMNY " + fields.length);
+        return fields[0].length;
     }
 
     int howManyRows(){
-        return fields[0].length;
+        //System.out.println("RZEDY " + fields[0].length);
+        return fields.length;
     }
 }

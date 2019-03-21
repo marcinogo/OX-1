@@ -20,7 +20,7 @@ class Game {
         moveCounter = net.getNetSize();
         List<User> users = settings.generateUsers();
 
-        while (!winner || moveCounter != 0) {
+        while (!winner && moveCounter != 0) {
             startRound(net, users.get(0));
         }
     }

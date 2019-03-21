@@ -16,19 +16,19 @@ class NetPrinter {
         printColumnNumbers();
         System.out.println();
         printUpperBorder();
-        for (int column = 0; column < net.howManyRows(); column++) {
+        for (int row = 0; row < net.howManyRows(); row++) {
             System.out.println();
-            if(String.valueOf(column).length() == 2) {
-                System.out.print(" " + column + "|");
+            if(String.valueOf(row).length() == 2) {
+                System.out.print(" " + row + "|");
             } else {
-                System.out.print(" " + column + " |");
+                System.out.print(" " + row + " |");
             }
-            for (int row = 0; row < net.howManyColumns(); row++) {
+            for (int column = 0; column < net.howManyColumns(); column++) {
                 printSign(net.getField(row, column));
             }
             System.out.println();
             System.out.print("---*");
-            for (int row = 0; row < net.howManyColumns(); row++) {
+            for (int column = 0; column < net.howManyColumns(); column++) {
                 System.out.print("---*");
             }
 

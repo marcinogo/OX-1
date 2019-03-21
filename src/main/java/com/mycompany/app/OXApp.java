@@ -36,8 +36,8 @@ public class OXApp {
             output.wrongInput();
             winStreak = output.setWinStreak();
         }
-        settings.setStartPlayer(Integer.parseInt(whoStarts));
-        settings.setNetSize(Integer.parseInt(heightOfNet), Integer.parseInt(widthOfNet));
+        settings.setStartPlayer(new StringParser(whoStarts).parseToInt());
+        settings.setNetSize(new StringParser(heightOfNet).parseToInt(),new StringParser(widthOfNet).parseToInt());
     }
 
 }

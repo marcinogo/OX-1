@@ -16,8 +16,6 @@ class FieldChecker {
     }
 
     boolean checkField() {
-        System.out.println("Rzedy " + net.howManyRows() + " Podany rzad" + row);
-        System.out.println("Kolumny " + net.howManyColumns() + " Podana kolumna" + column);
         if(row < 0 || row >= net.howManyRows() || column < 0 || column >= net.howManyColumns()) {
             return false;
         } else {
