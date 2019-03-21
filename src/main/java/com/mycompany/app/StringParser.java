@@ -1,6 +1,6 @@
 package com.mycompany.app;
 
-public class StringParser {
+class StringParser {
 
     private String text;
 

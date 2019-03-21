@@ -61,4 +61,27 @@ public class UserTestClass {
             User user = new User(Sign.O, false);
             assert !user.isFirst();
     }
+
+    @Test
+    public void checkIfCompareUsersWorksProperly(){
+        User user1 = new User(Sign.O, false);
+        User user2 = new User(Sign.X, true);
+        user1.addScore(3);
+        assert user1.compareTo(user2) > 0;
+    }
+
+    @Test
+    public void checkIfUserAreEqual(){
+        User user = new User(Sign.X, false);
+        User user1 = new User(Sign.X, false);
+        assert user.equals(user1);
+    }
+
+    @Test
+    public void checkIfPriorityIsChanged(){
+        User user = new User(Sign.O, true);
+        user.changePriority();
+        assert user.equals(new User(Sign.O,false));
+    }
+
 }

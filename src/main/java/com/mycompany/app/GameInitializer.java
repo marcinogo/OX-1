@@ -5,16 +5,16 @@ import java.util.Scanner;
 /**
  * @author Wiktor Rup
  */
-public class GameInitializer {
+class GameInitializer {
 
-    Scanner scanner;
+    private Scanner scanner;
 
     GameInitializer(Scanner scanner){
         this.scanner = scanner;
     }
 
     Settings initializeGame(Settings settings) {
-        Output output = new Output();
+        Output output = new Output(scanner);
         Input input = new Input();
         String language = output.chooseLanguage();
         while (!input.checkIfChosenLanguageIsProper(language)) {

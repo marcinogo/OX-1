@@ -64,7 +64,6 @@ class User implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        User user = (User) o;
         return Integer.compare(this.getScore(), ((User) o).getScore());
     }
 }
