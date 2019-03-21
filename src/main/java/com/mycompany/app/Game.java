@@ -19,9 +19,10 @@ class Game {
         Net net = settings.createNet();
         moveCounter = net.getNetSize();
         List<User> users = settings.generateUsers();
+        UserProvider userProvider = new UserProvider();
 
         while (!winner && moveCounter != 0) {
-            startRound(net, users.get(0));
+            startRound(net, userProvider.startingUser(users));
         }
     }
 
@@ -35,12 +36,12 @@ class Game {
             output.wrongInput();
             move = output.userMove(user);
         }
-        output.printNet(net);
         moveCounter--;
 
         if(judge.checkWinner(move, net)) {
             output.winner(user);
             winner = true;
+            output.printNet(net);
         }
 
     }

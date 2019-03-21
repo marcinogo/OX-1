@@ -56,4 +56,9 @@ class User {
     boolean isFirst() {
         return isFirst;
     }
+
+    User changePriority(){
+        this.isFirst = !isFirst;
+        return this;
+    }
 }
