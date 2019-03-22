@@ -19,10 +19,11 @@ public class GameTestClass {
 
     @Test
     public void checkGameInitialize() throws IOException {
-        String testFile = readFile("initTest", StandardCharsets.UTF_8);
-        Settings settings = new Settings();
-        settings = new GameInitializer(new Scanner(testFile)).initializeGame(settings);
+        String testFile = readFile("drawTest", StandardCharsets.UTF_8);
+        GameInitializer gameInitializer = new GameInitializer(new Scanner(testFile));
+        Settings settings = gameInitializer.initializeGame(new Settings());
         Game game = new Game(settings);
+        game.startGame(gameInitializer.getScanner());
     }
 
 

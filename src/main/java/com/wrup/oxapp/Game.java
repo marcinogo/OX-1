@@ -1,6 +1,7 @@
 package com.wrup.oxapp;
 
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author Wiktor Rup
@@ -25,13 +26,13 @@ class Game {
 
     }
 
-    void startGame() {
+    void startGame(Scanner scanner) {
         moveCounter = net.getNetSize();
         UserProvider userProvider = new UserProvider();
-        Output output = new Output();
+        Output output = new Output(scanner);
         Input input = new Input();
 
-        while (numberOfGames <= 3) {
+        while (numberOfGames <= 7500) {
             output.printGameName(numberOfGames, settings.getBundleProvider());
             while (!winner && moveCounter != 0) {
                 User user = userProvider.startingUser(users);

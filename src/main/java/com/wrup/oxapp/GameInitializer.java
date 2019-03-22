@@ -51,4 +51,7 @@ class GameInitializer {
         return settings;
     }
 
+    public Scanner getScanner() {
+        return scanner;
+    }
 }
