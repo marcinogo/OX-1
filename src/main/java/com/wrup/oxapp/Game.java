@@ -1,6 +1,7 @@
 package com.wrup.oxapp;
 
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author Wiktor Rup
@@ -25,10 +26,10 @@ class Game {
 
     }
 
-    void startGame() {
+    void startGame(Scanner scanner) {
         moveCounter = net.getNetSize();
         UserProvider userProvider = new UserProvider();
-        Output output = new Output();
+        Output output = new Output(scanner);
         Input input = new Input();
 
         while (numberOfGames <= 3) {
