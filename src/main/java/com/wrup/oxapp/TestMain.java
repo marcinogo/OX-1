@@ -1,5 +1,8 @@
 package com.wrup.oxapp;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,7 +10,11 @@ import java.util.Scanner;
  * @author Wiktor Rup
  */
 public class TestMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+
+        PrintStream toFile = new PrintStream(new File("./out.txt"));
+        PrintStream console = System.out;
+        System.setOut(console);
 
 
         int rows = 5;
