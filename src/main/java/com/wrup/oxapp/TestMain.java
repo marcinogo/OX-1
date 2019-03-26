@@ -26,7 +26,7 @@ public class TestMain {
         WinningConditionsGenerator generator = new WinningConditionsGenerator();
 
         generator.fillMaps(rows,columns);
-        List<String> winnninnCondition = generator.winningColumns(rows,columns,winStreak);
+        List<String> winnninnCondition = generator.autoWinVerticalGenerator(rows,columns,winStreak);
         for (String str : winnninnCondition) {
             builder.append(str);
         }

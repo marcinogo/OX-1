@@ -10,10 +10,24 @@ import java.util.Map;
  * @author Wiktor Rup
  */
 class WinningConditionsGenerator {
-    List<String> automatGameGeneratorDraw(int rows, int columns, int patternLength) {
+
+    private Map<Integer, int[]> mapOfRows = new HashMap<>();
+    private Map<Integer, int[]> mapOfColumns = new HashMap<>();
+
+    void fillMaps(int rows, int columns) {
+
+        for (int i = 0; i < rows; i++) {
+            mapOfRows.put(i, new int[]{i, rows - 1 - i});
+        }
+        for (int i = 0; i < columns; i++) {
+            mapOfColumns.put(i, new int[]{i, columns - 1 - i});
+        }
+    }
+
+    List<String> autoDrawGenerator(int rows, int columns, int patternLength) {
         List<String> toReturn = new ArrayList<>();
         StringBuilder builder = new StringBuilder();
-//NIEPARZYSTE ROWS
+
         int counter = 0;
         boolean upSideDown = false;
         if (rows % 2 != 0) {
@@ -32,8 +46,6 @@ class WinningConditionsGenerator {
             }
         }
 
-
-//PARZYSTE ROWS
         else {
             for (int i = 0; i < columns; i++) {
 
@@ -59,12 +71,7 @@ class WinningConditionsGenerator {
         return toReturn;
     }
 
-
-    private int randomNumInRange(int min, int max) {
-        return min + (int) (Math.random() * max);
-    }
-
-    List<String> winningRows(int rows, int columns, int patternLength) {
+    List<String> autoHorizontalWinGenerator(int rows, int columns, int patternLength) {
         List<String> movesToWin = new ArrayList<>();
         StringBuilder builder = new StringBuilder();
         int possibleCombinations = rows - patternLength + 1;
@@ -90,7 +97,7 @@ class WinningConditionsGenerator {
         return movesToWin;
     }
 
-    List<String> winningColumns(int rows, int columns, int patternLength) {
+    List<String> autoWinVerticalGenerator(int rows, int columns, int patternLength) {
         List<String> movesToWin = new ArrayList<>();
         StringBuilder builder = new StringBuilder();
         int possibleCombinations = columns - patternLength + 1;
@@ -116,7 +123,7 @@ class WinningConditionsGenerator {
         return movesToWin;
     }
 
-    List<String> winningRightDiagonal(int rows, int columns, int patternLength) {
+    List<String> autoWinAntiDigonalGenerator(int rows, int columns, int patternLength) {
         List<String> movesToWin = new ArrayList<>();
         StringBuilder builder = new StringBuilder();
         int numberOfIterations = columns - (rows - 1);
@@ -137,7 +144,7 @@ class WinningConditionsGenerator {
         return movesToWin;
     }
 
-    List<String> winningLeftDiagonal(int rows, int columns, int patternLength) {
+    List<String> autoWinDiagonalGenerator(int rows, int columns, int patternLength) {
         List<String> movesToWin = new ArrayList<>();
         StringBuilder builder = new StringBuilder();
         int numberOfIterations = columns - (columns - (rows - 1));
@@ -158,30 +165,7 @@ class WinningConditionsGenerator {
         return movesToWin;
     }
 
-    List<String> winningConditionDiagonalSmallTraingles(int rows, int columns, int patternLength) {
-        List<String> movesToWin = new ArrayList<>();
-        StringBuilder builder = new StringBuilder();
-        if (rows == patternLength) {
-            return null;
-        } else {
-            int iterations = rows - patternLength;
-            for (int i = 0; i < iterations; i++) {
-                for (int j = 1 + i; j <= (rows - patternLength); j++) {
-                    builder.setLength(0);
-                    for (int p = j; p < patternLength + j; p++) {
-                        builder.append(p).append(",").append(p - 1 - i).append(System.lineSeparator());
-                        if (p < patternLength + j - 1) {
-                            builder.append(p).append(",").append(p - i).append(System.lineSeparator());
-                        }
-                    }
-                    movesToWin.add(builder.toString());
-                }
-            }
-        }
-        return movesToWin;
-    }
-
-    List<String> winningConditionDiagonalSmallTraingleLeftBottomRightTop(int rows, int columns, int patternLength) {
+    List<String> autoWinSmallDiagonalsGenerator(int rows, int columns, int patternLength) {
         List<String> movesToWin = new ArrayList<>();
         StringBuilder builder = new StringBuilder();
         StringBuilder builder2 = new StringBuilder();
@@ -207,19 +191,6 @@ class WinningConditionsGenerator {
             }
         }
         return movesToWin;
-    }
-
-    private Map<Integer, int[]> mapOfRows = new HashMap<>();
-    private Map<Integer, int[]> mapOfColumns = new HashMap<>();
-
-    void fillMaps(int rows, int columns) {
-
-        for (int i = 0; i < rows; i++) {
-            mapOfRows.put(i, new int[]{i, rows - 1 - i});
-        }
-        for (int i = 0; i < columns; i++) {
-            mapOfColumns.put(i, new int[]{i, columns - 1 - i});
-        }
     }
 }
 
