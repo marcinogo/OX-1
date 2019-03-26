@@ -9,13 +9,17 @@ import java.util.Scanner;
 public class TestMain {
     public static void main(String[] args) {
 
+
+        int rows = 5;
+        int columns = 6;
+        int winStreak = 3;
         StringBuilder builder = new StringBuilder();
-        builder.append("1\n1\n10\n3\n3\n");
+        builder.append("1\n1\n").append(rows).append("\n").append(columns).append("\n").append(winStreak).append("\n");
 
         WinningConditionsGenerator generator = new WinningConditionsGenerator();
 
-        //generator.winningRightDiagonal(5,10,3);
-        List<String> winnninnCondition = generator.winningConditionDiagonalSmallTraingles(10,3,3);
+        generator.fillMaps(rows,columns);
+        List<String> winnninnCondition = generator.winningColumns(rows,columns,winStreak);
         for (String str : winnninnCondition) {
             builder.append(str);
         }

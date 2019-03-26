@@ -32,7 +32,7 @@ class Game {
         Output output = new Output(scanner);
         Input input = new Input();
 
-        while (numberOfGames <= 7500) {
+        while (numberOfGames <= 3) {
             output.printGameName(numberOfGames, settings.getBundleProvider());
             while (!winner && moveCounter != 0) {
                 User user = userProvider.startingUser(users);

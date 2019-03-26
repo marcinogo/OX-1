@@ -1,7 +1,9 @@
 package com.wrup.oxapp;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -11,12 +13,6 @@ class WinningConditionsGenerator {
     List<String> automatGameGeneratorDraw(int rows, int columns, int patternLength) {
         List<String> toReturn = new ArrayList<>();
         StringBuilder builder = new StringBuilder();
-// builder.append(1).append(System.lineSeparator());
-// builder.append(1).append(System.lineSeparator());
-// builder.append(rows).append(System.lineSeparator());
-// builder.append(columns).append(System.lineSeparator());
-// builder.append(patternLength).append(System.lineSeparator());
-// toReturn.add(builder.toString());
 //NIEPARZYSTE ROWS
         int counter = 0;
         boolean upSideDown = false;
@@ -59,7 +55,8 @@ class WinningConditionsGenerator {
                 counter++;
             }
         }
-        return null;
+        toReturn.add(builder.toString());
+        return toReturn;
     }
 
 
@@ -128,16 +125,9 @@ class WinningConditionsGenerator {
             for (int p = 0; p < possibleCombinations; p++) {
                 builder.setLength(0);
                 for (int j = p; j < patternLength + p; j++) {
-//                    if (k == numberOfIterations - 1) {
-//                        builder.append(j).append(",").append(k + j).append(System.lineSeparator());
-//                        if (j != patternLength - 1 + p) {
-//                            builder.append(j).append(",").append(k + j - 1).append(System.lineSeparator());
-//                        }
-//                    } else {
-                        builder.append(j).append(",").append(k + j).append(System.lineSeparator());
-                        if (j != patternLength - 1 + p) {
-                            builder.append(j).append(",").append(k + j + 1).append(System.lineSeparator());
-//                        }
+                    builder.append(j).append(",").append(k + j).append(System.lineSeparator());
+                    if (j != patternLength - 1 + p) {
+                        builder.append(j).append(",").append(k + j + 1).append(System.lineSeparator());
                     }
 
                 }
@@ -150,22 +140,15 @@ class WinningConditionsGenerator {
     List<String> winningLeftDiagonal(int rows, int columns, int patternLength) {
         List<String> movesToWin = new ArrayList<>();
         StringBuilder builder = new StringBuilder();
-        int numberOfIterations = columns -(columns - (rows - 1));
+        int numberOfIterations = columns - (columns - (rows - 1));
         int possibleCombinations = rows - patternLength + 1;
         for (int k = columns - 1; k >= numberOfIterations; k--) {
             for (int p = 0; p < possibleCombinations; p++) {
                 builder.setLength(0);
                 for (int j = p; j < patternLength + p; j++) {
-//                    if (k == numberOfIterations - 1) {
-//                        builder.append(j).append(",").append(k - j).append(System.lineSeparator());
-////                        if (j != patternLength - 1 + p) {
-////                            builder.append(j).append(",").append(k - j + 1).append(System.lineSeparator());
-////                        }
-//                    } else {
-                        builder.append(j).append(",").append(k - j).append(System.lineSeparator());
-                        if (j != patternLength - 1 + p) {
-                            builder.append(j).append(",").append(k - j - 1).append(System.lineSeparator());
-//                        }
+                    builder.append(j).append(",").append(k - j).append(System.lineSeparator());
+                    if (j != patternLength - 1 + p) {
+                        builder.append(j).append(",").append(k - j - 1).append(System.lineSeparator());
                     }
 
                 }
@@ -175,27 +158,68 @@ class WinningConditionsGenerator {
         return movesToWin;
     }
 
-    List<String> winningConditionDiagonalSmallTraingles(int rows, int columns, int patternLength){
+    List<String> winningConditionDiagonalSmallTraingles(int rows, int columns, int patternLength) {
         List<String> movesToWin = new ArrayList<>();
         StringBuilder builder = new StringBuilder();
-        if(rows==patternLength){
+        if (rows == patternLength) {
             return null;
         } else {
-            int iterations = rows-patternLength;
-            for (int i=0;i<iterations;i++){
-                for (int j = 1+i;j<=(rows-patternLength);j++){
+            int iterations = rows - patternLength;
+            for (int i = 0; i < iterations; i++) {
+                for (int j = 1 + i; j <= (rows - patternLength); j++) {
                     builder.setLength(0);
-                    for (int p=j;p<patternLength+j;p++){
-                        builder.append(p).append(",").append(p-1-i).append(System.lineSeparator());
-                        if(p<patternLength+j-1){
-                            builder.append(p).append(",").append(p-i).append(System.lineSeparator());
+                    for (int p = j; p < patternLength + j; p++) {
+                        builder.append(p).append(",").append(p - 1 - i).append(System.lineSeparator());
+                        if (p < patternLength + j - 1) {
+                            builder.append(p).append(",").append(p - i).append(System.lineSeparator());
                         }
                     }
                     movesToWin.add(builder.toString());
                 }
             }
         }
-      return movesToWin;
+        return movesToWin;
+    }
+
+    List<String> winningConditionDiagonalSmallTraingleLeftBottomRightTop(int rows, int columns, int patternLength) {
+        List<String> movesToWin = new ArrayList<>();
+        StringBuilder builder = new StringBuilder();
+        StringBuilder builder2 = new StringBuilder();
+        if (rows == patternLength) {
+            return null;
+        } else {
+            int iterations = rows - patternLength;
+            for (int i = 0; i < iterations; i++) {
+                for (int j = 1 + i; j <= (rows - patternLength); j++) {
+                    builder.setLength(0);
+                    builder2.setLength(0);
+                    for (int p = j; p < patternLength + j; p++) {
+                        builder.append(p).append(",").append(p - 1 - i).append(System.lineSeparator());
+                        builder2.append(mapOfRows.get(p)[1]).append(",").append(mapOfColumns.get(p - 1 - i)[1]).append(System.lineSeparator());
+                        if (p < patternLength + j - 1) {
+                            builder.append(p).append(",").append(p - i).append(System.lineSeparator());
+                            builder2.append(mapOfRows.get(p)[1]).append(",").append(mapOfColumns.get(p - i)[1]).append(System.lineSeparator());
+                        }
+                    }
+                    movesToWin.add(builder.toString());
+                    movesToWin.add(builder2.toString());
+                }
+            }
+        }
+        return movesToWin;
+    }
+
+    private Map<Integer, int[]> mapOfRows = new HashMap<>();
+    private Map<Integer, int[]> mapOfColumns = new HashMap<>();
+
+    void fillMaps(int rows, int columns) {
+
+        for (int i = 0; i < rows; i++) {
+            mapOfRows.put(i, new int[]{i, rows - 1 - i});
+        }
+        for (int i = 0; i < columns; i++) {
+            mapOfColumns.put(i, new int[]{i, columns - 1 - i});
+        }
     }
 }
 

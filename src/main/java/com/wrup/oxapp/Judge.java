@@ -47,8 +47,10 @@ class Judge {
     private void isCrossOrCircle(int row, int column) {
         if(net.getField(row, column).fieldSign.equals(Sign.X)) {
             cross++;
+            circle--;
         } else if(net.getField(row, column).fieldSign.equals(Sign.O)) {
             circle++;
+            cross--;
         }
     }
 
